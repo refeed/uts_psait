@@ -1,0 +1,15 @@
+{"nim": {
+    "details": {
+        "nama": "joko",
+        "alamat": "jakarta",
+        "tanggal_lahir": "12-12-12"
+    },
+    "grade": [
+        {
+            "kode_mk": "..",
+            "nama_mk": "..",
+            "sks": 2,
+            "nilai": 90
+        }
+    ]
+}}
