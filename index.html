@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>UTS Interoperabilitas</title>
+    </head>
+    <body>
+        <h1>Nilai dan data mahasiswa</h1>
+        <table border="1">
+            <thead>
+                <th>NIM</th>
+                <th>Nama</th>
+                <th>Alamat</th>
+                <th>Tanggal lahir</th>
+                <th>Kode MK</th>
+                <th>Nama MK</th>
+                <th>SKS</th>
+                <th>Nilai</th>
+                <th>Aksi</th>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(() => {
+                $.getJSON('/nilaiMahasiswa', (data) => {
+                    for (let nim of Object.keys(data)) {
+                        let details = data[nim]['details']
+                        $.each(data[nim]['grade'], (i, item) => {
+                            $('tbody').append(`
+                            <tr>
+                                <td>${nim}</td>
+                                <td>${details.nama}</td>
+                                <td>${details.alamat}</td>
+                                <td>${details.tanggal_lahir}</td>
+                                <td>${item.kode_mk}</td>
+                                <td>${item.nama_mk}</td>
+                                <td>${item.sks}</td>
+                                <td>${item.nilai}</td>
+                                <td>
+                                    <a href="#">Edit</a>
+                                    <a href="#">Hapus</a>
+                                </td>
+                            </tr>
+                        `)
+                        })
+                    }
+                    })
+                })
+        </script>
+    </body>
+</html>
